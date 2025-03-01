@@ -25,7 +25,7 @@ Log parser that processes network data using a lookup table to classify and coun
 ## Expected use: 
     1) Clone repository into directory of choice
     2) Move your lookup csv file and your flow log data txt file to the data directory (log_data.txt and lookup.csv included by default).
-    3) Ensure your working directory is /assessment
+    3) Navigate to assessment (cd <path-to-cloned-repository>/assessment). 
     4) Run from the terminal as python parser.py data/<Name of lookup file> data/<Name of flow log data file>.
     5) For testing, run from the terminal as python test_parser.py
 
