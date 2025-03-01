@@ -67,7 +67,7 @@ To run the tester, run from the terminal with python test_parser.py.
 ## Assumptions
 The script makes the following assumptions:
 - The lookup file is a .csv file, while the log data file is a .txt file, both provided by the user.
-- The file protocol-numbers-1.csv is provided by default.
+- The file protocol-numbers-1.csv is provided by default. It was downloaded from [IANA's Protocol Numbers Website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 - If the lookup table only has header rows (no content) or malformed, the script with classify all logs as "Untagged".
 - The lookup csv file follows the structure outlined in the assessment (fields: dstport,protocol,tag).
 - The script only supports default log format (version 2 only), not custom formats. The structure of each log is outlined in this website: https://docs.aws.amazon.com/vpc/latest/userguide/flow-log-records.html.
