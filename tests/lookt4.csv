@@ -1,5 +1,0 @@
-dstport,protocol,tag
-25,tcp,sv_P1
-53,udp  
-,tcp,web_P3 
-443,,secure_web 

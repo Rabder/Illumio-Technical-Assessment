@@ -16,8 +16,6 @@ Log parser that processes network data using a lookup table to classify and coun
     │   ├── log_data.txt
     │   ├── lookup.csv
     │   ├── protocol-numbers-1.csv
-    ├── tests/
-    │   ├── expected_out/
     ├── .gitattributes
     ├── parser.py
     ├── README.md
@@ -54,6 +52,18 @@ The code includes error handling for the following cases:
 ## Testing
 The submission includes a tester script, test_parser.py, which runs different cases test cases and checks if the parser output
 matches the expected output for those tests. 
+The tests included in this submission encompass the following cases:
+  - Correct overall functionality of parser
+  - Invalid command arguments
+  - Empty files (no content)
+  - Lookup file with just a header
+  - Malformed data 
+  - Non existent files
+  - Unknown protocol when reading logs
+  - Case insensitivity
+  - Handling of newlines and spaces
+
+To run the tester, run from the terminal with python test_parser.py. 
 
 ## Assumptions
 The script makes the following assumptions:
@@ -66,11 +76,11 @@ The script makes the following assumptions:
 - The 7th entry of each log represents the destination port.
 - The 8th entry of each log represents the protocol number.
 - Since the lookup file can have up to 10,000 entries, the script loads the lookup table into memory without noticeable performance issues.
-- Tester ignores newlines or trailing spaces to avoid false mismatches
 
 
 ## Use of LLMs:
-I implemented the error handling for this script, checking for issues in command line arguments, empty files and malformed inputs. I used Claude 3.7 Sonnet to refine my approach and incorporate some additional error handling measures. In particular, 
+I implemented the error handling for this script, checking for issues in command line arguments, empty files and malformed inputs. I used Claude 3.7 Sonnet to refine my approach and incorporate some additional error handling measures. 
+In particular, 
 it incorporated measures to check if the protocols were valid or not based on the data/protocol-numbers-1.csv file and errors in reading and outputting files. 
-For testing, I developed the script and tests with the help of the same LLM, using it facilitate the file comparison logic 
+For testing, I developed the script and tests with the help of the same LLM, using it facilitate writing the assertion logic 
 and brainstorming different test case scenarios.
