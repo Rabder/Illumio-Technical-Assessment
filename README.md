@@ -61,7 +61,7 @@ The script makes the following assumptions:
 - The file protocol-numbers-1.csv is provided by default.
 - If the lookup table only has header rows (no content) or malformed, the script with classify all logs as "Untagged".
 - The lookup csv file follows the structure outlined in the assessment (fields: dstport,protocol,tag).
-- The script only supports default log format (version 2 only), not custom formats. For more info, check out https://docs.aws.amazon.com/vpc/latest/userguide/flow-log-records.html.
+- The script only supports default log format (version 2 only), not custom formats. The structure of each log is outlined in this website: https://docs.aws.amazon.com/vpc/latest/userguide/flow-log-records.html.
 - The script will skip any rows of the log data txt file that are either malformed, empty or correspond to an unknown protocol number.
 - The 7th entry of each log represents the destination port.
 - The 8th entry of each log represents the protocol number.
