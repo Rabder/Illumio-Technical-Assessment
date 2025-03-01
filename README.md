@@ -20,7 +20,8 @@ Log parser that processes network data using a lookup table to classify and coun
   │   ├── expected_out/
   ├── .gitattributes
   ├── parser.py
-  └── README.md
+  ├── README.md
+  └── test_parser.py
 
 The tests/ directory contains three different test cases, each containing their own lookup and log_data file. The expected_out/ subdirectory holds the expected output files for each test case, with both tagcount and portprotcount results.
 
@@ -29,6 +30,7 @@ The tests/ directory contains three different test cases, each containing their 
     2) Move your lookup csv file and your flow log data txt file to the data directory (log_data.txt and lookup.csv included by default).
     3) Ensure your working directory is /assessment
     4) Run from the terminal as python parser.py data/<Name of lookup file> data/<Name of flow log data file>.
+    5) For testing, run from the terminal as python test_parser.py
 
 
 ## Functionality of the program
@@ -44,22 +46,31 @@ The tests/ directory contains three different test cases, each containing their 
 
 ## Error handling
 The code includes error handling for the following cases:
-- User inputs non existing or incorrect file paths for the lookup file or the flow log data file.
-- Script cannot find the protocol-numbers-1.csv file in the data directory
+- The user inputs non existing or incorrect file paths for the lookup file or the flow log data file.
+- The script cannot find the protocol-numbers-1.csv file in the data directory
+- The script reads a log with an unknown protocol 
+- The lookup, log data or protocol numbers files are empty or malformed.
+
+## Testing
+The submission includes a tester script, test_parser.py, which runs different cases test cases and checks if the parser output
+matches the expected output for those tests. 
 
 ## Assumptions
 The script makes the following assumptions:
 - The lookup file is a .csv file, while the log data file is a .txt file, both provided by the user.
 - The file protocol-numbers-1.csv is provided by default.
-- The lookup and log data files are not empty.
+- If the lookup table only has header rows (no content) or malformed, the script with classify all logs as "Untagged".
 - The lookup csv file follows the structure outlined in the assessment (fields: dstport,protocol,tag).
 - The script only supports default log format (version 2 only), not custom formats. For more info, check out https://docs.aws.amazon.com/vpc/latest/userguide/flow-log-records.html.
+- The script will skip any rows of the log data txt file that are either malformed, empty or correspond to an unknown protocol number.
 - The 7th entry of each log represents the destination port.
 - The 8th entry of each log represents the protocol number.
 - Since the lookup file can have up to 10,000 entries, the script loads the lookup table into memory without noticeable performance issues.
+- Tester ignores newlines or trailing spaces to avoid false mismatches
 
 
 ## Use of LLMs:
-I implemented the error handling for argument validation, with Claude 3.7 Sonnet helping to refine the approach.
-To validate the error handling measures, I ran tests for each error scenario and determined if the error handling was implemented correctly. 
-I also developed test cases for this script with the assistance of the sameeLLM (brainstorm different lookup tables and log data files). To validate the test cases, I compared the structure of the lookup and log data files with the structure provided in the outline of this assessment. For the log data files, I made sure that the structure of their logs was aligned with the table in the AWS website provided in the outline.
+I implemented the error handling for this script, checking for issues in command line arguments, empty files and malformed inputs. I used Claude 3.7 Sonnet to refine my approach and incorporate some additional error handling measures. In particular, 
+it incorporated measures to check if the protocols were valid or not based on the data/protocol-numbers-1.csv file and errors in reading and outputting files. 
+For testing, I developed the script and tests with the help of the same LLM, using it facilitate the file comparison logic 
+and brainstorming different test case scenarios.

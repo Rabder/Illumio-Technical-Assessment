@@ -1,11 +1,6 @@
 dns_tcp,1
-
 dns_udp,1
-
 ping,1
-
 dhcp,1
-
 tftp,1
-
 ssh,1
