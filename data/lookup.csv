@@ -2,7 +2,7 @@ dstport,protocol,tag
 
 25,tcp,sv_P1 
 
-68,udp,sv_P2 
+68,UDP,sv_P2 
 
 23,tcp,sv_P1 
 

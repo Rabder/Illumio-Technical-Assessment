@@ -1,0 +1,8 @@
+dstport,protocol,tag
+53,tcp,dns_tcp
+53,udp,dns_udp
+0,icmp,ping
+67,udp,dhcp
+68,udp,dhcp
+69,udp,tftp
+22,tcp,ssh

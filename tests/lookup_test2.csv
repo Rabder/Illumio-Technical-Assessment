@@ -1,0 +1,5 @@
+dstport,protocol,tag
+22,TCP,ssh
+23,tcp,telnet
+80,TcP,http
+443,Tcp,https
