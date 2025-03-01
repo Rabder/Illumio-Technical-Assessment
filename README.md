@@ -21,7 +21,6 @@ Log parser that processes network data using a lookup table to classify and coun
     ├── README.md
     └── test_parser.py
 
-The tests/ directory contains three different test cases, each containing their own lookup and log_data file. The expected_out/ subdirectory holds the expected output files for each test case, with both tagcount and portprotcount results.
 
 ## Expected use: 
     1) Clone repository into directory of choice
